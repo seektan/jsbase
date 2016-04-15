@@ -490,8 +490,8 @@ $(elem).data(key,value);
 $.data(elem,key,value);
 
 ajax请求jsonp数据
-dataType: "script",//script的success不管是否请求成功都会执行
-dataType: "jsonp",//jsonp不会执行success
+dataType: "script",//script的success在请求成功后执行
+dataType: "jsonp",//jsonp不会执行success,但是请求成功后会执行error
 
 缓存对象
 var $list = $("#list li");
