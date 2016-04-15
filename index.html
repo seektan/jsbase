@@ -489,9 +489,8 @@ $(elem).data(key,value);
 // good
 $.data(elem,key,value);
 
-ajax请求jsonp数据
-dataType: "script",//script的success在请求成功，回调之后执行
-dataType: "jsonp",//jsonp不会执行success,但是请求功，回调之后会执行error
+//ajax异步
+async: false
 
 缓存对象
 var $list = $("#list li");
@@ -666,6 +665,11 @@ $.ajax({
         self.query_join_num_suc.call(this, data);
     }
 });
+
+//ajax请求jsonp数据
+dataType: "script",//script的success在请求成功，回调之后执行
+dataType: "jsonp" + async: false,//jsonp不会执行success,但是请求功，回调之后会执行error
+dataType: "jsonp" //jsonp 请求成功，回调之后会执行success
 </code></pre>
                 </section>
 
@@ -777,15 +781,20 @@ $("#gamesRecommend").html($HTML.compile({
                 </section>
 
                 <section>
-                    <h2>前端构建\工程化</h2>
+                    <h2>模块化\构建\工程化</h2>
                     <p>代码的转化、压缩、合并、模块处理、自动部署<p>
                     <ul>
+                        <li>npm</li>
                         <li>webpack</li>
                         <li>gulp</li>
-                        <li>fis</li>
+                        <li>fis //集成部署发布</li>
                         <li>...</li>
                     </ul>
                 </section>
+            </section>
+
+            <section>
+                <h2>THE END</h2>
             </section>
 
          </div>
