@@ -490,7 +490,20 @@ $(elem).data(key,value);
 $.data(elem,key,value);
 
 //ajax异步
-async: false
+async: false + dataType : jsonp/scrip      //仍是异步
+async: false + dataType : text/html/默认值 //同步
+var b = 0;
+$.ajax({
+    type: "GET",
+    url: url,
+    async: false,
+    dataType: "html",
+    success: function (data) {
+        b = 1;
+        alert(b)
+    }
+});
+alert("g "+b)
 
 缓存对象
 var $list = $("#list li");
@@ -656,20 +669,20 @@ $.getScript("http://game.qq.com/time/qqadv/Info_new_" + did + ".js").done(functi
                 <section>
                     <h2>ajax + jsonp</h2>
 <pre><code data-trim data-noescape>
+var game_servers_url = "http://webs.tgp.qq.com/webgame/conf/server_" + game_id + ".json";
 $.ajax({
-    url: self.count_query_url,
     type: "GET",
+    url: game_servers_url,
     dataType: "jsonp",
-    data: {version: 1, item: 6, sub_item_list: ids.join('/'), uin: self.uid},
-    success: function(data) {
-        self.query_join_num_suc.call(this, data);
-    }
+    async: false,
+    cache: false,
+    success: function (data) {},
+    error: function (data) {}
 });
 
 //ajax请求jsonp数据
-dataType: "script",//script的success在请求成功，回调之后执行
-dataType: "jsonp" + async: false,//jsonp不会执行success,但是请求功，回调之后会执行error
-dataType: "jsonp" //jsonp 请求成功，回调之后会执行success
+dataType: "script",//回调 success
+dataType: "jsonp", //回调 error
 </code></pre>
                 </section>
 
